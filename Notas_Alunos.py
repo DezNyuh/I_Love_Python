@@ -14,12 +14,12 @@ Sala1 = {
     }
 }
 
-#Verificar o aluno aprovado
-for nome, info in Sala1.items():
-    if info['Status'] == 'Aprovado':
-        print(f'O aluno {nome} foi {info['Status']}')
+def pesquisar_aluno(nome, aluno):
+    if nome in aluno:
+        print(f'Nome: {nome}!')
+        print(f'Nota: {aluno[nome] ["Nota"]}')
+        print(f'Status: {aluno[nome] ["Status"]}')
+    else:
+        print(f'O aluno {nome} não foi encontrado.')
 
-#Verificar o aluno reprovado
-for nome, info in Sala1.items():
-    if info['Status'] == 'Reprovado':
-        print(f'O aluno {nome} foi {info['Status']}')
+pesquisar_aluno('Rafaela Silva', Sala1)
