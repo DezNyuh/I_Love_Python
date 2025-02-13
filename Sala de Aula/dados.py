@@ -13,12 +13,3 @@ Sala1 = {
 'Status' : 'Aprovado'
     }
 }
-
-todos_alunos(Sala1)
-
-
-atualizar_dados('Rafaela Silva', 'Nota', 10)
-
-print('\nAlunos atualizados:')
-for nome, info in Sala1.items():
-    print(f"{nome}, {info}")

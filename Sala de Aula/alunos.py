@@ -1,14 +1,15 @@
-#Pesquisa o nome do aluno.
-def pesquisar_aluno(nome, aluno):
-    if nome in aluno:
-        print(f'Nome: {nome}!')
-        print(f'Nota: {aluno[nome] ["Nota"]}')
-        print(f'Status: {aluno[nome] ["Status"]}')
+from dados import Sala1
+
+#Pesquisar aluno
+def pesquisar_aluno():
+    nome = input('Digite o nome do aluno: ').title()
+    if nome in Sala1:
+        print(f'Estudante {nome} teve a nota de {Sala1[nome]['Nota']} e foi {Sala1[nome]['Status']}!')
     else:
-        print(f'O aluno {nome} não foi encontrado.')
+        print(f'Estudante {nome} não encontrado!')
 
 #Adicionar um novo aluno no dicionário
-def adicionar_aluno(alunos):
+def adicionar_aluno():
 
     #Coletar o nome do aluno
     nome = input('Digite o nome do aluno: ').title()
@@ -22,30 +23,30 @@ def adicionar_aluno(alunos):
             status = 'Aprovado' if nota >= 6 else 'Reprovado'
 
         #Adicionar o aluno ao dicionário
-            alunos[nome] = {'Nota': nota, 'Status': status}
+            Sala1[nome] = {'Nota': nota, 'Status': status}
             print(f'Aluno {nome} adicionado com sucesso!')
+            #Atualiza a Lista
+            print('\nAlunos atualizados:')
+            for nome, dados in Sala1.items():
+                print(f'{nome} - Nota: {dados['Nota']} - Status: {dados['Status']}!')
         else:
             print('Nota inválida! A nota deve estar entre 0 e 10')
     except ValueError:
         print('Erro: A nota deve ser um número válido')
+        
+#Lista de todos os alunos
+def todos_alunos():
+    for nome, info in Sala1.items():
+        print(f'Nome: {nome} - Nota: {info['Nota']} - Status: {info['Status']}')
 
-def todos_alunos(lista):
-    if not lista:
-        print('Nenhum aluno cadastrado')
-        return
-    
-    print('Lista de alunos: ')
-    for nome, info in lista.items():
-        print(f'\n Nome: {nome}')
-        for chave, valor in info.items():
-            print(f'{chave}: {valor}')
-
-def atualizar_dados(nome_aluno, chave, novo_valor):
-    if nome_aluno in Sala1:
-        if chave in Sala1[nome_aluno]:
-            Sala1[nome_aluno][chave] = novo_valor
-            print(f'{chave} de {nome_aluno} foi atualizada para {novo_valor}')
-        else:
-            print(f'Erro! A chave "{chave}" não existe para {nome_aluno}')
+#Atualizar dados
+def atualizar_dados():
+    nome = input('Digite o nome do aluno: ').title()
+    if nome in Sala1:
+        nova_nota = float(input('Digite a nova nota do aluno: '))
+        Sala1[nome]['Nota'] = nova_nota
+        Sala1[nome]['Status'] = 'Aprovado' if nova_nota >= 6 else 'Reprovado'
+        print(f'Nota de {nome} atualizada com sucesso!')
     else:
-        print(f'Erro! O Aluno "{nome_aluno}" não foi encontrado!')
+        print(f'Aluno {nome} não encontrado!')
+
