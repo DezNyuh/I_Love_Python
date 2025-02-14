@@ -43,10 +43,33 @@ def todos_alunos():
 def atualizar_dados():
     nome = input('Digite o nome do aluno: ').title()
     if nome in Sala1:
-        nova_nota = float(input('Digite a nova nota do aluno: '))
-        Sala1[nome]['Nota'] = nova_nota
-        Sala1[nome]['Status'] = 'Aprovado' if nova_nota >= 6 else 'Reprovado'
-        print(f'Nota de {nome} atualizada com sucesso!')
+        try:
+            nova_nota = float(input('Digite a nova nota do aluno: '))
+            if 0 <= nova_nota <= 10:
+                Sala1[nome]['Nota'] = nova_nota
+                Sala1[nome]['Status'] = 'Aprovado' if nova_nota >= 6 else 'Reprovado'
+                print(f'Nota de {nome} atualizada com sucesso!')
+            else:
+                print('Nota inválida! A nota deve ser entre 0 e 10!')
+        except ValueError:
+            print('Erro: Entrada inválida!')
     else:
         print(f'Aluno {nome} não encontrado!')
 
+#Remover aluno
+def remover_aluno():
+    nome = input('Digite o nome do aluno a ser removido: ').title()
+    if nome in Sala1:
+        del Sala1[nome]
+        print(f'Aluno {nome} removido com sucesso!')
+    else:
+        print(f'Aluno {nome} não encontrado!')
+
+#Calcular média
+def calcular_media():
+    if not Sala1:
+        print('Nenhum aluno encontrado')
+
+    total_notas = sum(info['Nota'] for info in Sala1.values()) 
+    media = total_notas / len(Sala1)
+    print(f'A média da sala é {media:.2f}')
