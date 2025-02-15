@@ -1,5 +1,5 @@
 from alunos import pesquisar_aluno, adicionar_aluno, todos_alunos, atualizar_dados, remover_aluno, calcular_media
-from professores import pesquisar_professor, adicionar_professor
+from professores import pesquisar_professor, adicionar_professor, remover_professor, todos_professores
 def menu():
     print('\n --- MENU --- ')
     print('1. Pesquisar um aluno')
@@ -8,7 +8,11 @@ def menu():
     print('4. Atualizar nota de um aluno')
     print('5. Remover um aluno')
     print('6. Média da sala')
-    print('7. Sair.')
+    print('7. Pesquisar professor')
+    print('8. Adicionar professor')
+    print('9. Remover professor')
+    print('10. Lista de professores')
+    print('11. Sair.')
     return input('Escolha uma opção:')
 
 while True:
@@ -28,6 +32,15 @@ while True:
         calcular_media()
     elif opcao=='7':
         pesquisar_professor()
-    elif opcao =='8': 
+    elif opcao=='8':
+        adicionar_professor()
+    elif opcao=='9':
+        remover_professor()
+    elif opcao=='10':
+        todos_professores()
+    elif opcao =='11':
+        print('Saindo...')
         break
+    else:
+        print('Erro: Opção inválida.')
 

@@ -17,3 +17,13 @@ def pesquisar_professor():
 
 def remover_professor():
     nome = input('Digite o nome do professor: ').title()
+    if nome in professoress1:
+        del professoress1[nome]
+        print(f'Professor {nome} removido com sucesso!')
+    else:
+        print('Erro: Professor não encontrado!')
+
+def todos_professores():
+    for nome, info in professoress1.items():
+        print(f'Professor {nome} - Disciplina: {info["Disciplina"]} - Turma: {info['Turma']}')
+
