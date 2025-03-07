@@ -24,7 +24,7 @@ class Agenda:
             with open(self.arquivo, 'r') as file:
                 contatos = file.readlines()
                 if contatos:
-                    print('Agenda de Contatos:')
+                    print('Agenda de Contatos: ')
                     for linha in contatos:
                         nome, telefone = linha.strip().split(',')
                         print(f'Nome: {nome}, Telefone: {telefone}')
